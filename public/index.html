@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Laboratório de autenticação</title>
+</head>
+<body>
+    <main class="principal">
+        <h1>Laboratório de autenticação</h1>
+        <p id="status">A sessão ainda não foi consultada.</p>
+
+        <section class="botoes">
+            <a class="botao" href="/oauth/login/google">Entrar com Google</a>
+            <a class="botao" href="/oauth/login/github">Entrar com GitHub</a>
+        </section>
+
+        <form method="post" action="/oauth/logout">
+            <button type="submit" class="botao botao-sair">Sair</button>
+        </form>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.principal {
+    text-align: center;
+    margin: 10% auto;
+    max-width: 320px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.botao {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.botao-sair {
+    background-color: #757575;
+}
