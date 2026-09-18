@@ -1,0 +1,2 @@
+https://oauth-login-lab.pages.dev
+https://oauth-login-lab.pages.dev/oauth/callback/github
