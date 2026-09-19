@@ -3,23 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evidencias da entrega</title>
+<title>Painel de evidencias</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f6f5;
+    color: #1b1b1b;
+  }
+
+  header {
+    background-color: #1b5e20;
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  header .titulo h1 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  header .titulo p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #c8e6c9;
+  }
+
+  header .sessao {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.85rem;
+  }
+
+  .sessao-info {
+    background-color: rgba(255, 255, 255, 0.12);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  form.logout {
+    margin: 0;
+  }
+
+  .botao-sair {
+    background-color: #757575;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .botao-sair:hover {
+    background-color: #616161;
+  }
+
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  .resumo {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .cartao-resumo {
+    flex: 1;
+    min-width: 180px;
+    background: white;
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #2e7d32;
+  }
+
+  .cartao-resumo .numero {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1b5e20;
+  }
+
+  .cartao-resumo .rotulo {
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  h2.secao {
+    font-size: 1.05rem;
+    color: #1b1b1b;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 8px;
+    margin: 32px 0 16px;
+  }
+
+  .grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .cartao {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .cartao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .cartao .cabecalho-cartao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .selo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .selo.pdf { background-color: #c62828; }
+  .selo.txt { background-color: #1565c0; }
+  .selo.md  { background-color: #6a1b9a; }
+
+  .cartao .nome-arquivo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  .cartao .descricao {
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    color: #777;
+  }
+</style>
 </head>
 <body>
+<header>
+<div class="titulo">
+<h1>Painel de evidencias</h1>
+<p>Laboratorio de login federado (Google e GitHub) &mdash; Cloudflare Pages + Pages Functions + D1</p>
+</div>
+<div class="sessao">
+<span class="sessao-info" id="status">Consultando sessao...</span>
+<form class="logout" method="post" action="/oauth/logout">
+<button type="submit" class="botao-sair">Sair</button>
+</form>
+</div>
+</header>
+
 <main>
-<h1>Evidencias da entrega</h1>
-<p>Arquivos entregues para o laboratorio de login federado (Google e GitHub) no Cloudflare Pages.</p>
-<ul>
-<li><a href="entrega1/01-pages-configuracao.pdf">01-pages-configuracao.pdf</a></li>
-<li><a href="entrega1/02-google-retorno.txt">02-google-retorno.txt</a></li>
-<li><a href="entrega1/03-github-retorno.txt">03-github-retorno.txt</a></li>
-<li><a href="entrega1/04-d1-esquema.txt">04-d1-esquema.txt</a></li>
-<li><a href="entrega1/05-inicio-login-google.pdf">05-inicio-login-google.pdf</a></li>
-<li><a href="entrega1/06-inicio-login-github.pdf">06-inicio-login-github.pdf</a></li>
-<li><a href="entrega1/07-testes-falha.md">07-testes-falha.md</a></li>
-<li><a href="entrega1/08-aceitacao.md">08-aceitacao.md</a></li>
-</ul>
-<form method="post" action="/oauth/logout"><button type="submit">Sair</button></form>
+<section class="resumo">
+<div class="cartao-resumo">
+<div class="numero">8</div>
+<div class="rotulo">arquivos de evidencia entregues</div>
+</div>
+<div class="cartao-resumo">
+<div class="numero">2</div>
+<div class="rotulo">provedores testados (Google e GitHub)</div>
+</div>
+<div class="cartao-resumo">
+<div class="numero">6</div>
+<div class="rotulo">casos de teste de falha executados</div>
+</div>
+</section>
+
+<h2 class="secao">Configuracao e infraestrutura</h2>
+<div class="grade">
+<a class="cartao" href="entrega1/01-pages-configuracao.pdf">
+<div class="cabecalho-cartao">
+<span class="selo pdf">PDF</span>
+<span class="nome-arquivo">01-pages-configuracao.pdf</span>
+</div>
+<p class="descricao">Nome do projeto, ramificacao de producao e opcoes de construcao no Cloudflare Pages.</p>
+</a>
+<a class="cartao" href="entrega1/04-d1-esquema.txt">
+<div class="cabecalho-cartao">
+<span class="selo txt">TXT</span>
+<span class="nome-arquivo">04-d1-esquema.txt</span>
+</div>
+<p class="descricao">Esquema (tabelas e indices) consultado no console do banco D1.</p>
+</a>
+</div>
+
+<h2 class="secao">Registro dos provedores OAuth</h2>
+<div class="grade">
+<a class="cartao" href="entrega1/02-google-retorno.txt">
+<div class="cabecalho-cartao">
+<span class="selo txt">TXT</span>
+<span class="nome-arquivo">02-google-retorno.txt</span>
+</div>
+<p class="descricao">URL de retorno cadastrada no cliente OAuth Web do Google.</p>
+</a>
+<a class="cartao" href="entrega1/03-github-retorno.txt">
+<div class="cabecalho-cartao">
+<span class="selo txt">TXT</span>
+<span class="nome-arquivo">03-github-retorno.txt</span>
+</div>
+<p class="descricao">Pagina inicial e URL de retorno cadastradas na OAuth App do GitHub.</p>
+</a>
+</div>
+
+<h2 class="secao">Inicio do login (cabecalhos saneados)</h2>
+<div class="grade">
+<a class="cartao" href="entrega1/05-inicio-login-google.pdf">
+<div class="cabecalho-cartao">
+<span class="selo pdf">PDF</span>
+<span class="nome-arquivo">05-inicio-login-google.pdf</span>
+</div>
+<p class="descricao">Requisicao de inicio do login com Google, com valores sensiveis removidos.</p>
+</a>
+<a class="cartao" href="entrega1/06-inicio-login-github.pdf">
+<div class="cabecalho-cartao">
+<span class="selo pdf">PDF</span>
+<span class="nome-arquivo">06-inicio-login-github.pdf</span>
+</div>
+<p class="descricao">Requisicao de inicio do login com GitHub, com valores sensiveis removidos.</p>
+</a>
+</div>
+
+<h2 class="secao">Testes e aceitacao</h2>
+<div class="grade">
+<a class="cartao" href="entrega1/07-testes-falha.md">
+<div class="cabecalho-cartao">
+<span class="selo md">MD</span>
+<span class="nome-arquivo">07-testes-falha.md</span>
+</div>
+<p class="descricao">Seis casos de falha executados, com preparacao, pedido, resultado esperado e observado.</p>
+</a>
+<a class="cartao" href="entrega1/08-aceitacao.md">
+<div class="cabecalho-cartao">
+<span class="selo md">MD</span>
+<span class="nome-arquivo">08-aceitacao.md</span>
+</div>
+<p class="descricao">Lista final dos 18 criterios de aceitacao do laboratorio, marcados como concluidos.</p>
+</a>
+</div>
 </main>
+
+<footer>
+Laboratorio de login em site estatico no Cloudflare Pages &mdash; entrega individual.
+</footer>
+
+<script>
+fetch("/api/me", { credentials: "same-origin" })
+  .then((response) => (response.ok ? response.json() : null))
+  .then((user) => {
+    const status = document.getElementById("status");
+    if (user) {
+      status.textContent = "Sessao de " + (user.email || user.displayName || "usuario autenticado");
+    } else {
+      status.textContent = "Nenhuma sessao ativa";
+    }
+  })
+  .catch(() => {
+    document.getElementById("status").textContent = "Nao foi possivel consultar a sessao";
+  });
+</script>
 </body>
 </html>
