@@ -4,7 +4,7 @@ fetch("/api/me", { credentials: "same-origin" })
           const status = document.getElementById("status");
           if (user) {
                     status.textContent = `Sessão de ${user.email ?? user.displayName}.`;
-                    window.location.href = "/entrega1/";
+                          window.location.href = "/evidencias.html";
           } else {
                     status.textContent = "Nenhuma sessão neste navegador.";
           }
