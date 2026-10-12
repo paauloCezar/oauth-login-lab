@@ -16,3 +16,9 @@ Em caso de necessidade de rotacao (vazamento suspeito, saida de acesso, expiraca
 2. Atualizar o segredo criptografado correspondente (`GOOGLE_CLIENT_SECRET` ou `GITHUB_CLIENT_SECRET`) em Cloudflare Pages, no projeto `oauth-login-lab`, em Settings > Variables and Secrets.
 3. Solicitar uma nova implantacao (deployment) do projeto para que o novo segredo entre em vigor.
 4. Revogar/excluir o Client Secret antigo no provedor, encerrando sua validade.
+
+## Automação (GitHub Actions)
+
+- `ci.yml`: a cada push e PR para a main, procura segredos versionados, aplica as migrações D1 num SQLite local e valida o HTML.
+- `revisao-ia.yml`: a cada PR, a IA (`actions/ai-inference`) revisa o diff e comenta no PR.
+- `migrar.yml`: depois de um merge que altera `migrations/`, aplica as migrações no D1 remoto.
