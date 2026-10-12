@@ -1,0 +1,8 @@
+name = "oauth-login-lab"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "oauth-sessions-paulocezar"
+database_id = "ed4ea18e-198f-4940-a754-93b8b3a7688c"
+migrations_dir = "migrations"
