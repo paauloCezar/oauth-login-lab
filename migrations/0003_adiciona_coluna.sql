@@ -1,1 +1,1 @@
-ALTER TABLE notas ADD COLUMN turma TEXT,;
+ALTER TABLE notas ADD COLUMN turma TEXT;
