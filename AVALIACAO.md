@@ -83,6 +83,15 @@ cid | name  | type    | notnull | pk
 
 Cuidado tomado: o `wrangler.toml` não tem `pages_build_output_dir`. Com essa linha, o Cloudflare Pages passaria a usar o arquivo como fonte das configurações do projeto, no lugar do painel, e poderia quebrar o login em produção.
 
+## Bônus: resumo das migrações por IA
+
+O `migrar.yml` ganhou, depois do `wrangler d1 migrations apply`, um step que monta um prompt com o `git diff` da pasta `migrations/` desse push, chama `actions/ai-inference@v3` e escreve a resposta em `$GITHUB_STEP_SUMMARY`.
+
+- PR: https://github.com/paauloCezar/oauth-login-lab/pull/6 (acrescenta o step e a migração `0004_indice_notas_aluno.sql`, um índice em `notas.aluno`, usado pelo `/api/notas`)
+- Execução do merge com o resumo visível na página: https://github.com/paauloCezar/oauth-login-lab/actions/runs/38194551343
+
+Na revisão do PR #6, a IA fez três alertas que não se aplicam: disse que faltava permissão de acesso a modelos (isso era da `v1`, que usava o GitHub Models; a `v3` usa o `COPILOT_GITHUB_TOKEN`), que o `head -c` falharia com `pipefail` (o GitHub só liga o `pipefail` quando o workflow declara `shell: bash`, e este não declara) e que `github.event.before` poderia vir só com zeros (só acontece no push que cria a `main`, que já existe).
+
 ## Perguntas
 
 1. **Por que o `ci.yml` roda duas vezes num push em ramificação com PR aberto, e qual execução o status check considera?**
