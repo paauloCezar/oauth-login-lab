@@ -2,7 +2,7 @@
 
 Repositório: https://github.com/paauloCezar/oauth-login-lab
 
-Dupla: Paulo Cezar e <nome da dupla>
+Dupla: Paulo Cezar (RA 2026108305) e <nome da dupla> (RA <RA da dupla>)
 
 ## Tarefa 1: CI a cada commit
 
