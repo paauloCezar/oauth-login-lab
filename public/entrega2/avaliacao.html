@@ -70,7 +70,7 @@
 <li>Execução verde depois da correção: <a href="https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190630038">https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190630038</a></li>
 </ul>
 <p>Por que a migração é testada em SQLite antes de chegar ao D1: o D1 usa o mesmo SQL do SQLite, então aplicar as migrações num banco descartável no CI encontra o erro de sintaxe antes do merge, sem tocar no banco de produção.</p>
-<p>Observação: a primeira execução do esqueleto falhou sem nenhum segredo no código, porque o <code>git grep</code> encontrou o texto <code>GOCSPX-</code> dentro do próprio <code>ci.yml</code> (<a href="https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190542840">https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190542840</a>). Corrigi excluindo o <code>ci.yml</code> da busca com <code>&#39;:!.github/workflows/ci.yml&#39;</code>.</p>
+<p>Observação: a primeira execução do esqueleto falhou sem nenhum segredo no código, porque o <code>git grep</code> encontrou o texto <code>GOCSPX&#45;</code> dentro do próprio <code>ci.yml</code> (<a href="https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190542840">https://github.com/paauloCezar/oauth-login-lab/actions/runs/38190542840</a>). Corrigi excluindo o <code>ci.yml</code> da busca com <code>&#39;:!.github/workflows/ci.yml&#39;</code>.</p>
 <h2>Tarefa 2: proteger a main com o CI</h2>
 <p>Regra <code>protege-main</code> (ruleset na main): exige pull request e o status check <code>verificar</code> aprovado.</p>
 <ul>
