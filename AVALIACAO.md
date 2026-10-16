@@ -79,7 +79,7 @@ cid | name  | type    | notnull | pk
 3   | turma | TEXT    | 0       | 0
 ```
 
-- Prova de que o segundo merge (sem mudar `migrations/`) não disparou o workflow: o PR https://github.com/paauloCezar/oauth-login-lab/pull/4 só alterou o `README.md`. O merge (commit `c55be7a`) disparou apenas o `ci` (https://github.com/paauloCezar/oauth-login-lab/actions/runs/38193760559). A lista de execuções do `migrar` (https://github.com/paauloCezar/oauth-login-lab/actions/workflows/migrar.yml) tem uma única execução, a do merge do PR #1 (commit `14e294c`).
+- Prova de que o segundo merge (sem mudar `migrations/`) não disparou o workflow: o PR https://github.com/paauloCezar/oauth-login-lab/pull/4 só alterou o `README.md`. O merge (commit `c55be7a`) disparou apenas o `ci` (https://github.com/paauloCezar/oauth-login-lab/actions/runs/38193760559). A lista de execuções do `migrar` (https://github.com/paauloCezar/oauth-login-lab/actions/workflows/migrar.yml) tem só duas execuções, as dos merges dos PRs #1 (commit `14e294c`) e #6 (commit `cbc60f8`), que mexeram em `migrations/`. O merge do PR #4 não aparece nela.
 
 Cuidado tomado: o `wrangler.toml` não tem `pages_build_output_dir`. Com essa linha, o Cloudflare Pages passaria a usar o arquivo como fonte das configurações do projeto, no lugar do painel, e poderia quebrar o login em produção.
 
@@ -95,7 +95,7 @@ Na revisão do PR #6, a IA fez três alertas que não se aplicam: disse que falt
 ## Perguntas
 
 1. **Por que o `ci.yml` roda duas vezes num push em ramificação com PR aberto, e qual execução o status check considera?**
-   O workflow escuta dois eventos: `push` (qualquer ramificação) e `pull_request` para a main, e um push numa ramificação com PR aberto dispara os dois. A execução de `pull_request` testa o resultado do merge da ramificação com a main, e é ela que representa o que vai entrar na main. As duas publicam um check chamado `verificar` no mesmo commit, e a regra só libera o merge se o `verificar` estiver aprovado.
+   O workflow escuta dois eventos: `push` (qualquer ramificação) e `pull_request` para a main, e um push numa ramificação com PR aberto dispara os dois. A execução de `pull_request` testa o resultado do merge da ramificação com a main, e é ela que representa o que vai entrar na main. As duas aparecem no PR com o nome `verificar`, ligadas ao último commit da ramificação, mas a de `push` testa esse commit sozinho e a de `pull_request` testa como ficaria depois do merge com a main. A regra só libera o merge se o `verificar` estiver aprovado.
 
 2. **Por que um PR vindo de fork não consegue usar `secrets.COPILOT_PAT`, e qual ataque isso impede?**
    No evento `pull_request` vindo de um fork, o GitHub roda o código escrito por quem fez o fork, e por isso não entrega os segredos do repositório de destino (o `GITHUB_TOKEN` também vem só com leitura). Isso impede que qualquer pessoa abra um PR que altera o workflow ou um script para imprimir ou enviar os segredos para fora, roubando o token.
